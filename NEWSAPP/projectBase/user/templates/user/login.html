@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main-content %}
+<div class="container mt-5 mb-5">
+    <div class="col text-center">
+        <h1 class="text-primary mb-5">Login</h1>
+        <hr>
+        <form class="mt-5" action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            {% if error %}
+            <div class="alert alert-dark text-danger">{{error}}</div>
+            {% endif %}
+            <div class="mb-5">
+                <label for="username" class="form-label text-danger">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Your Username">
+            </div>
+            <div class="mb-5">
+                <label for="password" class="form-label text-danger">Password</label>
+                <input type="password" class="form-control" name="password" placeholder="Your Password">
+            </div>
+            <button type="submit" class="btn btn-primary mt-5">LOGIN</button>
+        </form>
+    </div>
+</div>
+{% endblock main-content %}

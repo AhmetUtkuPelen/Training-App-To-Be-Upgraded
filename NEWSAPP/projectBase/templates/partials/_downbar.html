@@ -1,0 +1,48 @@
+{% load static %}
+{% comment %} {% if user.is_authenticated %} {% endcomment %}
+<nav class="navbar bg-dark">
+  {% comment %} ! first api currency api javascript ! {% endcomment %}
+    <div>
+      <form class="text-center">
+        <div class="convert-box ">
+            <div class="amount">
+                <input type="text" value="1" class="text-center text-primary">
+            </div>
+            <div class="from">
+                <div class="select-input">
+                    <img src="https://flagcdn.com/48x36/us.png">
+                    <select class="rounded text-danger"></select>
+                </div>
+            </div>
+            <div class="reverse"><i class="fas fa-exchange-alt"></i></div>
+            <div class="to">
+                <div class="select-input">
+                    <img src="https://flagcdn.com/48x36/gb.png">
+                    <select class="rounded text-danger"></select>
+                </div>
+            </div>
+            <div class="result text-white">Getting exchange rate...</div>
+            <button class="btn btn-info text-white">Get Exchange Rate</button>
+        </div>
+    </form>
+    </div>
+    {% comment %} !second api weather api beautiful soup python request {% endcomment %}
+    <div class="text-center">
+        <h1 class="text-white">Check Weather</h1>
+        <form method="GET">
+            <div>
+                <label for="city"></label>
+                <input class="citylabel" type="text" id="city" value="{{ request.GET.city }}" placeholder="City..." name="city"/>
+            </div>
+            <input class="btn btn-info text-white" type="submit" value="Check"/>
+        </form>
+        {% if result %}
+            <h3 class="text-white">{{ result.region }}</h3>
+            <h3 class="text-white">{{ result.dayhour }}</h3>
+            <h3 class="text-white">{{ result.temp_now }}</h3>
+            <h3 class="text-white">{{ result.weather_now }}</h3>
+        {% endif %}
+    </div>
+
+  </nav>
+  {% comment %} {% endif %} {% endcomment %}
